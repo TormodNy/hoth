@@ -3,17 +3,30 @@ import { AppContext } from "../App";
 import { Box } from "./Box";
 import { Button } from "@mui/material";
 import { DirectionsBus, Image, TextFields, WbSunny } from "@mui/icons-material";
-import { BoxType } from "../types";
+import { BoxType, IImageBox, ITextBox } from "../types";
 
 interface UndefinedBoxProps {
   index: number;
+}
+
+function boxDefaultValue(boxType: BoxType) {
+  switch (boxType) {
+    case BoxType.Text:
+      return { boxType, text: "" } as ITextBox;
+    case BoxType.Image:
+      return { boxType, source: "", fit: true } as IImageBox;
+    default:
+      return { boxType };
+  }
 }
 
 export function UndefinedBox({ index }: UndefinedBoxProps) {
   const { setBoxes } = useContext(AppContext);
 
   function setBoxType(boxType: BoxType) {
-    setBoxes((prev) => prev.map((box, i) => (i === index ? boxType : box)));
+    setBoxes((prev) =>
+      prev.map((box, i) => (i === index ? boxDefaultValue(boxType) : box))
+    );
   }
 
   return (

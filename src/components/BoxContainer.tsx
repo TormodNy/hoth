@@ -13,13 +13,13 @@ export function BoxContainer() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
       {boxes.map((box, i) => {
-        switch (box) {
+        switch (box.boxType) {
           case BoxType.Undefined:
             return <UndefinedBox index={i} key={i} />;
           case BoxType.Text:
-            return <TextBox index={i} key={i} />;
+            return <TextBox index={i} box={box} key={i} />;
           case BoxType.Image:
-            return <ImageBox index={i} key={i} />;
+            return <ImageBox index={i} box={box} key={i} />;
           case BoxType.Weather:
             return <WeatherBox index={i} key={i} />;
           case BoxType.Transport:

@@ -9,7 +9,9 @@ export function AddBoxButton() {
 
   return (
     <Button
-      onClick={() => setBoxes((prev) => [...prev, BoxType.Undefined])}
+      onClick={() =>
+        setBoxes((prev) => [...prev, { boxType: BoxType.Undefined }])
+      }
       variant="outlined"
     >
       <Add />

@@ -3,17 +3,17 @@ import { BoxContainer } from "./components/BoxContainer";
 import { AddBoxButton } from "./components/AddBoxButton";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
-import { BoxType } from "./types";
+import { BoxType, IBox } from "./types";
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark",
   },
 });
 
 interface IAppContext {
-  boxes: BoxType[];
-  setBoxes: React.Dispatch<React.SetStateAction<BoxType[]>>;
+  boxes: IBox[];
+  setBoxes: React.Dispatch<React.SetStateAction<IBox[]>>;
 }
 
 export const AppContext = createContext<IAppContext>({
@@ -22,7 +22,7 @@ export const AppContext = createContext<IAppContext>({
 });
 
 function App() {
-  const [boxes, setBoxes] = useState<BoxType[]>([BoxType.Undefined]);
+  const [boxes, setBoxes] = useState<IBox[]>([{ boxType: BoxType.Undefined }]);
 
   return (
     <ThemeProvider theme={darkTheme}>
