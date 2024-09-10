@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { AppContext, BoxType } from "../App";
+import { AppContext } from "../App";
 import { Box } from "./Box";
 import { Button } from "@mui/material";
 import { DirectionsBus, Image, TextFields, WbSunny } from "@mui/icons-material";
+import { BoxType } from "../types";
 
 interface UndefinedBoxProps {
   index: number;

@@ -3,8 +3,9 @@ import { ImageBox } from "./ImageBox";
 import { TextBox } from "./TextBox";
 import { TransportBox } from "./TransportBox";
 import { WeatherBox } from "./WeatherBox";
-import { AppContext, BoxType } from "../App";
+import { AppContext } from "../App";
 import { UndefinedBox } from "./UndefinedBox";
+import { BoxType } from "../types";
 
 export function BoxContainer() {
   const { boxes } = useContext(AppContext);
