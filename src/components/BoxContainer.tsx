@@ -15,15 +15,15 @@ export function BoxContainer() {
       {boxes.map((box, i) => {
         switch (box) {
           case BoxType.Undefined:
-            return <UndefinedBox index={i} />;
+            return <UndefinedBox index={i} key={i} />;
           case BoxType.Text:
-            return <TextBox index={i} />;
+            return <TextBox index={i} key={i} />;
           case BoxType.Image:
-            return <ImageBox index={i} />;
+            return <ImageBox index={i} key={i} />;
           case BoxType.Weather:
-            return <WeatherBox index={i} />;
+            return <WeatherBox index={i} key={i} />;
           case BoxType.Transport:
-            return <TransportBox index={i} />;
+            return <TransportBox index={i} key={i} />;
         }
       })}
     </div>
