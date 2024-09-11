@@ -8,16 +8,25 @@ import { UndefinedBox } from "./UndefinedBox";
 import { BoxType } from "../../types";
 import { CustomBox } from "./CustomBox";
 import { CountdownBox } from "./CountdownBox";
+import { AddBoxButton } from "../AddBoxButton";
 
-export function BoxContainer() {
+interface BoxContainerProps {
+  cursorInWindow: boolean;
+}
+
+export function BoxContainer({ cursorInWindow }: BoxContainerProps) {
   const { boxes } = useContext(AppContext);
+  const boxLength = boxes.length + (cursorInWindow ? 1 : 0);
 
   return (
     <div
       className="w-full h-full grid grid-cols-4 gap-4"
       style={{
-        gridTemplateColumns: `repeat(${Math.min(boxes.length, 4)}, minmax(0, 1fr))`,
-        gridTemplateRows: `repeat(${boxes.length > 4 ? 2 : 1}, minmax(0, 1fr))`
+        gridTemplateColumns: `repeat(${Math.min(
+          boxLength,
+          4
+        )}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${boxLength > 4 ? 2 : 1}, minmax(0, 1fr))`,
       }}
     >
       {boxes.map((box, i) => {
@@ -38,6 +47,7 @@ export function BoxContainer() {
             return <CustomBox index={i} box={box} key={box.id} />;
         }
       })}
+      {cursorInWindow && boxes.length < 8 && <AddBoxButton />}
     </div>
   );
 }

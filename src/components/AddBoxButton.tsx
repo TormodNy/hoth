@@ -8,17 +8,20 @@ export function AddBoxButton() {
   const { setBoxes } = useContext(AppContext);
 
   return (
-    <Button
-      onClick={() =>
-        setBoxes((prev) => [
-          ...prev,
-          { id: crypto.randomUUID(), boxType: BoxType.Undefined },
-        ])
-      }
-      variant="outlined"
-    >
-      <Add />
-      Add box
-    </Button>
+    <div className="w-full h-full flex items-center justify-center">
+      <Button
+        onClick={() =>
+          setBoxes((prev) => [
+            ...prev,
+            { id: crypto.randomUUID(), boxType: BoxType.Undefined },
+          ])
+        }
+        variant="outlined"
+        className="w-full max-h-full aspect-square"
+      >
+        <Add />
+        Add box
+      </Button>
+    </div>
   );
 }
