@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "../../App";
 import { Box } from "./Box";
 import { Button } from "@mui/material";
 import {
@@ -9,7 +9,7 @@ import {
   TextFields,
   WbSunny,
 } from "@mui/icons-material";
-import { BoxType, ICustomBox, IImageBox, ITextBox } from "../types";
+import { BoxType, ICustomBox, IImageBox, ITextBox } from "../../types";
 
 interface UndefinedBoxProps {
   index: number;

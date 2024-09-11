@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { Box } from "./Box";
 import { TextField, ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { BoxSettings } from "./BoxSettings";
-import { IImageBox } from "../types";
-import { AppContext } from "../App";
+import { BoxSettings } from "./common/BoxSettings";
+import { IImageBox } from "../../types";
+import { AppContext } from "../../App";
 
 interface ImageBoxProps {
   index: number;

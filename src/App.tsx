@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { BoxContainer } from "./components/BoxContainer";
+import { BoxContainer } from "./components/boxes/BoxContainer";
 import { AddBoxButton } from "./components/AddBoxButton";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, IconButton } from "@mui/material";
@@ -41,7 +41,7 @@ function App() {
 
           <IconButton
             color="info"
-            sx={{ position: "fixed", top: 8, right: 8, zIndex: 1000 }}
+            sx={{ position: "fixed", top: 4, right: 4, zIndex: 1000 }}
             onClick={() => localStorage.setItem("state", JSON.stringify(boxes))}
           >
             <Save />

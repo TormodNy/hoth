@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { Box } from "./Box";
 import { TextField } from "@mui/material";
-import { BoxSettings } from "./BoxSettings";
-import { AppContext } from "../App";
-import { ITextBox } from "../types";
+import { BoxSettings } from "./common/BoxSettings";
+import { AppContext } from "../../App";
+import { ITextBox } from "../../types";
 
 interface TextBoxProps {
   index: number;

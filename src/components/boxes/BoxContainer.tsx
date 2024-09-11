@@ -3,9 +3,9 @@ import { ImageBox } from "./ImageBox";
 import { TextBox } from "./TextBox";
 import { TransportBox } from "./TransportBox";
 import { WeatherBox } from "./WeatherBox";
-import { AppContext } from "../App";
+import { AppContext } from "../../App";
 import { UndefinedBox } from "./UndefinedBox";
-import { BoxType } from "../types";
+import { BoxType } from "../../types";
 import { CustomBox } from "./CustomBox";
 
 export function BoxContainer() {

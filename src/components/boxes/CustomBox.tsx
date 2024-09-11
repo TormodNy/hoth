@@ -1,9 +1,9 @@
 import { TextField } from "@mui/material";
-import { ICustomBox } from "../types";
+import { ICustomBox } from "../../types";
 import { Box } from "./Box";
 import { useContext, useState } from "react";
-import { AppContext } from "../App";
-import { BoxSettings } from "./BoxSettings";
+import { AppContext } from "../../App";
+import { BoxSettings } from "./common/BoxSettings";
 
 interface CustomBoxProps {
   index: number;

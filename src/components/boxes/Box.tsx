@@ -1,5 +1,5 @@
 import { ReactNode, useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "../../App";
 import { Delete } from "@mui/icons-material";
 
 interface BoxProps {
