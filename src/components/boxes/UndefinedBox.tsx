@@ -5,11 +5,18 @@ import { Button } from "@mui/material";
 import {
   Code,
   DirectionsBus,
+  HourglassBottom,
   Image,
   TextFields,
   WbSunny,
 } from "@mui/icons-material";
-import { BoxType, ICustomBox, IImageBox, ITextBox } from "../../types";
+import {
+  BoxType,
+  ICountdownBox,
+  ICustomBox,
+  IImageBox,
+  ITextBox,
+} from "../../types";
 
 interface UndefinedBoxProps {
   index: number;
@@ -21,6 +28,12 @@ function boxDefaultValue(boxType: BoxType) {
       return { boxType, text: "" } as ITextBox;
     case BoxType.Image:
       return { boxType, source: "", fit: true } as IImageBox;
+    case BoxType.Countdown:
+      return {
+        boxType,
+        date: new Date().toISOString().split("T")[0],
+        time: "00:00",
+      } as ICountdownBox;
     case BoxType.Custom:
       return { boxType, source: "" } as ICustomBox;
     default:
@@ -42,26 +55,33 @@ export function UndefinedBox({ index }: UndefinedBoxProps) {
       <div className="w-full h-full grid gap-2 grid-cols-2">
         <Button variant="outlined" onClick={() => setBoxType(BoxType.Text)}>
           <TextFields />
-          Text box
+          Text
         </Button>
         <Button variant="outlined" onClick={() => setBoxType(BoxType.Image)}>
           <Image />
-          Image box
+          Image
         </Button>
         <Button variant="outlined" onClick={() => setBoxType(BoxType.Weather)}>
           <WbSunny />
-          Weather box
+          Weather
         </Button>
         <Button
           variant="outlined"
           onClick={() => setBoxType(BoxType.Transport)}
         >
           <DirectionsBus />
-          Transport box
+          Transport
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => setBoxType(BoxType.Countdown)}
+        >
+          <HourglassBottom />
+          Countdown
         </Button>
         <Button variant="outlined" onClick={() => setBoxType(BoxType.Custom)}>
           <Code />
-          Custom box
+          Custom
         </Button>
       </div>
     </Box>

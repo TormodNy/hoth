@@ -4,6 +4,7 @@ export enum BoxType {
   Image = "Image",
   Weather = "Weather",
   Transport = "Transport",
+  Countdown = "Countdown",
   Custom = "Custom",
 }
 
@@ -30,6 +31,13 @@ export interface ITransportBox {
   boxType: BoxType.Transport;
 }
 
+export interface ICountdownBox {
+  boxType: BoxType.Countdown;
+  date: string;
+  time: string;
+  occasion?: string;
+}
+
 export interface ICustomBox {
   boxType: BoxType.Custom;
   source: string;
@@ -41,4 +49,5 @@ export type IBox =
   | IImageBox
   | IWeatherBox
   | ITransportBox
+  | ICountdownBox
   | ICustomBox;
