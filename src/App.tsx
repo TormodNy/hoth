@@ -23,12 +23,16 @@ export const AppContext = createContext<IAppContext>({
 });
 
 function App() {
-  const [boxes, setBoxes] = useState<IBox[]>([{ boxType: BoxType.Undefined }]);
+  const [boxes, setBoxes] = useState<IBox[]>([]);
 
   useEffect(() => {
-    const localStorageBoxes = localStorage.getItem("state");
-    if (localStorageBoxes) {
-      setBoxes(JSON.parse(localStorageBoxes));
+    if (boxes.length === 0) {
+      const localStorageBoxes = localStorage.getItem("state");
+      if (localStorageBoxes) {
+        setBoxes(JSON.parse(localStorageBoxes));
+      } else {
+        setBoxes([{ boxType: BoxType.Undefined }]);
+      }
     }
   }, []);
 
