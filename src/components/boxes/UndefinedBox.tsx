@@ -12,6 +12,7 @@ import {
 } from "@mui/icons-material";
 import {
   BoxType,
+  IBaseBox,
   ICountdownBox,
   ICustomBox,
   IImageBox,
@@ -22,22 +23,23 @@ interface UndefinedBoxProps {
   index: number;
 }
 
-function boxDefaultValue(boxType: BoxType) {
+function boxDefaultValue(box: IBaseBox, boxType: BoxType) {
   switch (boxType) {
     case BoxType.Text:
-      return { boxType, text: "" } as ITextBox;
+      return { ...box, boxType, text: "" } as ITextBox;
     case BoxType.Image:
-      return { boxType, source: "", fit: true } as IImageBox;
+      return { ...box, boxType, source: "", fit: true } as IImageBox;
     case BoxType.Countdown:
       return {
+        ...box,
         boxType,
         date: new Date().toISOString().split("T")[0],
         time: "00:00",
       } as ICountdownBox;
     case BoxType.Custom:
-      return { boxType, source: "" } as ICustomBox;
+      return { ...box, boxType, source: "" } as ICustomBox;
     default:
-      return { boxType };
+      return { ...box, boxType };
   }
 }
 
@@ -46,7 +48,7 @@ export function UndefinedBox({ index }: UndefinedBoxProps) {
 
   function setBoxType(boxType: BoxType) {
     setBoxes((prev) =>
-      prev.map((box, i) => (i === index ? boxDefaultValue(boxType) : box))
+      prev.map((box, i) => (i === index ? boxDefaultValue(box, boxType) : box))
     );
   }
 

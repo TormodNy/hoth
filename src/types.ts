@@ -8,37 +8,42 @@ export enum BoxType {
   Custom = "Custom",
 }
 
-export interface IUndefinedBox {
+export interface IBaseBox {
+  boxType: BoxType;
+  id: string;
+}
+
+export interface IUndefinedBox extends IBaseBox {
   boxType: BoxType.Undefined;
 }
 
-export interface ITextBox {
+export interface ITextBox extends IBaseBox {
   boxType: BoxType.Text;
   text: string;
 }
 
-export interface IImageBox {
+export interface IImageBox extends IBaseBox {
   boxType: BoxType.Image;
   source: string;
   fit: boolean;
 }
 
-export interface IWeatherBox {
+export interface IWeatherBox extends IBaseBox {
   boxType: BoxType.Weather;
 }
 
-export interface ITransportBox {
+export interface ITransportBox extends IBaseBox {
   boxType: BoxType.Transport;
 }
 
-export interface ICountdownBox {
+export interface ICountdownBox extends IBaseBox {
   boxType: BoxType.Countdown;
   date: string;
   time: string;
   occasion?: string;
 }
 
-export interface ICustomBox {
+export interface ICustomBox extends IBaseBox {
   boxType: BoxType.Custom;
   source: string;
 }

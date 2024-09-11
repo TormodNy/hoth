@@ -31,7 +31,7 @@ function App() {
       if (localStorageBoxes) {
         setBoxes(JSON.parse(localStorageBoxes));
       } else {
-        setBoxes([{ boxType: BoxType.Undefined }]);
+        setBoxes([{ id: crypto.randomUUID(), boxType: BoxType.Undefined }]);
       }
     }
   }, []);

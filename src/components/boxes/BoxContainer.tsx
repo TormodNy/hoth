@@ -17,19 +17,19 @@ export function BoxContainer() {
       {boxes.map((box, i) => {
         switch (box.boxType) {
           case BoxType.Undefined:
-            return <UndefinedBox index={i} key={i} />;
+            return <UndefinedBox index={i} key={box.id} />;
           case BoxType.Text:
-            return <TextBox index={i} box={box} key={i} />;
+            return <TextBox index={i} box={box} key={box.id} />;
           case BoxType.Image:
-            return <ImageBox index={i} box={box} key={i} />;
+            return <ImageBox index={i} box={box} key={box.id} />;
           case BoxType.Weather:
-            return <WeatherBox index={i} key={i} />;
+            return <WeatherBox index={i} key={box.id} />;
           case BoxType.Transport:
-            return <TransportBox index={i} key={i} />;
+            return <TransportBox index={i} key={box.id} />;
           case BoxType.Countdown:
-            return <CountdownBox index={i} box={box} key={i} />;
+            return <CountdownBox index={i} box={box} key={box.id} />;
           case BoxType.Custom:
-            return <CustomBox index={i} box={box} key={i} />;
+            return <CustomBox index={i} box={box} key={box.id} />;
         }
       })}
     </div>

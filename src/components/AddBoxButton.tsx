@@ -10,7 +10,10 @@ export function AddBoxButton() {
   return (
     <Button
       onClick={() =>
-        setBoxes((prev) => [...prev, { boxType: BoxType.Undefined }])
+        setBoxes((prev) => [
+          ...prev,
+          { id: crypto.randomUUID(), boxType: BoxType.Undefined },
+        ])
       }
       variant="outlined"
     >
