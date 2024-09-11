@@ -2,8 +2,14 @@ import { useContext } from "react";
 import { AppContext } from "../App";
 import { Box } from "./Box";
 import { Button } from "@mui/material";
-import { DirectionsBus, Image, TextFields, WbSunny } from "@mui/icons-material";
-import { BoxType, IImageBox, ITextBox } from "../types";
+import {
+  Code,
+  DirectionsBus,
+  Image,
+  TextFields,
+  WbSunny,
+} from "@mui/icons-material";
+import { BoxType, ICustomBox, IImageBox, ITextBox } from "../types";
 
 interface UndefinedBoxProps {
   index: number;
@@ -15,6 +21,8 @@ function boxDefaultValue(boxType: BoxType) {
       return { boxType, text: "" } as ITextBox;
     case BoxType.Image:
       return { boxType, source: "", fit: true } as IImageBox;
+    case BoxType.Custom:
+      return { boxType, source: "" } as ICustomBox;
     default:
       return { boxType };
   }
@@ -50,6 +58,10 @@ export function UndefinedBox({ index }: UndefinedBoxProps) {
         >
           <DirectionsBus />
           Transport box
+        </Button>
+        <Button variant="outlined" onClick={() => setBoxType(BoxType.Custom)}>
+          <Code />
+          Custom box
         </Button>
       </div>
     </Box>

@@ -6,6 +6,7 @@ import { WeatherBox } from "./WeatherBox";
 import { AppContext } from "../App";
 import { UndefinedBox } from "./UndefinedBox";
 import { BoxType } from "../types";
+import { CustomBox } from "./CustomBox";
 
 export function BoxContainer() {
   const { boxes } = useContext(AppContext);
@@ -24,6 +25,8 @@ export function BoxContainer() {
             return <WeatherBox index={i} key={i} />;
           case BoxType.Transport:
             return <TransportBox index={i} key={i} />;
+          case BoxType.Custom:
+            return <CustomBox index={i} box={box} key={i} />;
         }
       })}
     </div>

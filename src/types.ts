@@ -4,6 +4,7 @@ export enum BoxType {
   Image = "Image",
   Weather = "Weather",
   Transport = "Transport",
+  Custom = "Custom",
 }
 
 export interface IUndefinedBox {
@@ -29,4 +30,15 @@ export interface ITransportBox {
   boxType: BoxType.Transport;
 }
 
-export type IBox = IUndefinedBox | ITextBox | IImageBox | IWeatherBox | ITransportBox;
+export interface ICustomBox {
+  boxType: BoxType.Custom;
+  source: string;
+}
+
+export type IBox =
+  | IUndefinedBox
+  | ITextBox
+  | IImageBox
+  | IWeatherBox
+  | ITransportBox
+  | ICustomBox;
