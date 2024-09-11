@@ -13,7 +13,13 @@ export function BoxContainer() {
   const { boxes } = useContext(AppContext);
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4">
+    <div
+      className="w-full h-full grid grid-cols-4 gap-4"
+      style={{
+        gridTemplateColumns: `repeat(${Math.min(boxes.length, 4)}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${boxes.length > 4 ? 2 : 1}, minmax(0, 1fr))`
+      }}
+    >
       {boxes.map((box, i) => {
         switch (box.boxType) {
           case BoxType.Undefined:

@@ -39,9 +39,9 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <AppContext.Provider value={{ boxes, setBoxes }}>
-        <div className="w-full flex flex-col items-center p-10 gap-8">
+        <div className="w-full h-full flex flex-col items-center p-10 gap-8">
           <BoxContainer />
-          <AddBoxButton />
+          {boxes.length < 8 && <AddBoxButton />}
 
           <IconButton
             color="info"
