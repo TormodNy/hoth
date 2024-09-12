@@ -6,6 +6,10 @@ interface ClockBoxProps {
   box: IClockBox;
 }
 
+function toDoubleDigitFormat(value: number) {
+  return value.toString().padStart(2, "0");
+}
+
 export function ClockBox({ box }: ClockBoxProps) {
   const [clock, setClock] = useState(new Date());
 
@@ -20,7 +24,8 @@ export function ClockBox({ box }: ClockBoxProps) {
   return (
     <Box box={box} removable>
       <h1 className="text-6xl">
-        {clock.getHours()}:{clock.getMinutes()}
+        {toDoubleDigitFormat(clock.getHours())}:
+        {toDoubleDigitFormat(clock.getMinutes())}
       </h1>
     </Box>
   );
