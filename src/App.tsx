@@ -31,7 +31,9 @@ function App() {
       if (localStorageBoxes) {
         setBoxes(JSON.parse(localStorageBoxes));
       } else {
-        setBoxes([{ id: crypto.randomUUID(), boxType: BoxType.Undefined }]);
+        setBoxes([
+          { id: crypto.randomUUID(), boxType: BoxType.Undefined, saved: false },
+        ]);
       }
     }
 
@@ -53,6 +55,12 @@ function App() {
     }
   }, []);
 
+  function saveToLocalStorage() {
+    const savedBoxes = boxes.map((box) => ({ ...box, saved: true }));
+    localStorage.setItem("state", JSON.stringify(savedBoxes));
+    setBoxes(savedBoxes);
+  }
+
   return (
     <ThemeProvider theme={darkTheme}>
       <AppContext.Provider value={{ boxes, setBoxes }}>
@@ -62,9 +70,7 @@ function App() {
             <IconButton
               color="info"
               sx={{ position: "fixed", top: 4, right: 4, zIndex: 1000 }}
-              onClick={() =>
-                localStorage.setItem("state", JSON.stringify(boxes))
-              }
+              onClick={saveToLocalStorage}
             >
               <Save />
             </IconButton>

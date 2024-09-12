@@ -7,17 +7,16 @@ import { Countdown } from "./common/Countdown";
 import { TextField } from "@mui/material";
 
 interface CountdownBoxProps {
-  index: number;
   box: ICountdownBox;
 }
 
-export function CountdownBox({ index, box }: CountdownBoxProps) {
+export function CountdownBox({ box }: CountdownBoxProps) {
   const { setBoxes } = useContext(AppContext);
-  const [showSettings, setShowSettings] = useState(true);
+  const [showSettings, setShowSettings] = useState(!box.saved);
 
   return (
     <Box
-      index={index}
+      box={box}
       removable={!showSettings}
       onEdit={() => setShowSettings(true)}
     >
@@ -29,8 +28,8 @@ export function CountdownBox({ index, box }: CountdownBoxProps) {
               value={box.date}
               onChange={(e) =>
                 setBoxes((prev) =>
-                  prev.map((b, i) =>
-                    i === index ? { ...b, date: e.target.value } : b
+                  prev.map((b) =>
+                    b.id === box.id ? { ...b, date: e.target.value } : b
                   )
                 )
               }
@@ -40,8 +39,8 @@ export function CountdownBox({ index, box }: CountdownBoxProps) {
               value={box.time}
               onChange={(e) =>
                 setBoxes((prev) =>
-                  prev.map((b, i) =>
-                    i === index ? { ...b, time: e.target.value } : b
+                  prev.map((b) =>
+                    b.id === box.id ? { ...b, time: e.target.value } : b
                   )
                 )
               }
@@ -54,8 +53,8 @@ export function CountdownBox({ index, box }: CountdownBoxProps) {
             value={box.occasion ?? ""}
             onChange={(e) =>
               setBoxes((prev) =>
-                prev.map((b, i) =>
-                  i === index ? { ...b, occasion: e.target.value } : b
+                prev.map((b) =>
+                  b.id === box.id ? { ...b, occasion: e.target.value } : b
                 )
               )
             }

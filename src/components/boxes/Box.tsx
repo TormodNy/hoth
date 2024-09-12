@@ -2,17 +2,18 @@ import { ReactNode, useContext, useState } from "react";
 import { AppContext } from "../../App";
 import { Delete, Edit } from "@mui/icons-material";
 import { BoxOverlayButton } from "./common/BoxOverlayButton";
+import { IBaseBox } from "../../types";
 
 interface BoxProps {
-  index: number;
+  box: IBaseBox;
   removable: boolean;
   onEdit?: () => void;
   children: ReactNode;
 }
 
-export function Box({ index, children, removable, onEdit }: BoxProps) {
+export function Box({ box, children, removable, onEdit }: BoxProps) {
   const { setBoxes } = useContext(AppContext);
-  const [editing, setEditing] = useState(!removable);
+  const [editing, setEditing] = useState(!box.saved || !removable);
 
   function handleEdit() {
     setEditing(true);
@@ -31,7 +32,7 @@ export function Box({ index, children, removable, onEdit }: BoxProps) {
         {removable && !editing && (
           <div className="absolute top-0 left-0 w-full h-full hover:opacity-100 opacity-0 transition-opacity flex flex-col">
             <BoxOverlayButton
-              hoverColor="hover:bg-green-950"
+              hoverColor="hover:bg-blue-950"
               onClick={handleEdit}
             >
               <Edit fontSize="large" />
@@ -40,7 +41,7 @@ export function Box({ index, children, removable, onEdit }: BoxProps) {
             <BoxOverlayButton
               hoverColor="hover:bg-red-950"
               onClick={() =>
-                setBoxes((prev) => prev.filter((_, i) => i !== index))
+                setBoxes((prev) => prev.filter((b) => b.id !== box.id))
               }
             >
               <Delete fontSize="large" />

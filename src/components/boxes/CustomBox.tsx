@@ -6,17 +6,16 @@ import { AppContext } from "../../App";
 import { BoxSettings } from "./common/BoxSettings";
 
 interface CustomBoxProps {
-  index: number;
   box: ICustomBox;
 }
 
-export function CustomBox({ index, box }: CustomBoxProps) {
+export function CustomBox({ box }: CustomBoxProps) {
   const { setBoxes } = useContext(AppContext);
-  const [showSettings, setShowSettings] = useState(true);
+  const [showSettings, setShowSettings] = useState(!box.saved);
 
   return (
     <Box
-      index={index}
+      box={box}
       removable={!showSettings}
       onEdit={() => setShowSettings(true)}
     >
@@ -27,8 +26,8 @@ export function CustomBox({ index, box }: CustomBoxProps) {
             value={box.source}
             onChange={(e) =>
               setBoxes((prev) =>
-                prev.map((b, i) =>
-                  i === index ? { ...b, source: e.target.value } : b
+                prev.map((b) =>
+                  b.id === box.id ? { ...b, source: e.target.value } : b
                 )
               )
             }

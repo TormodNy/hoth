@@ -6,17 +6,16 @@ import { AppContext } from "../../App";
 import { ITextBox } from "../../types";
 
 interface TextBoxProps {
-  index: number;
   box: ITextBox;
 }
 
-export function TextBox({ index, box }: TextBoxProps) {
+export function TextBox({ box }: TextBoxProps) {
   const { setBoxes } = useContext(AppContext);
-  const [showSettings, setShowSettings] = useState(true);
+  const [showSettings, setShowSettings] = useState(!box.saved);
 
   return (
     <Box
-      index={index}
+      box={box}
       removable={!showSettings}
       onEdit={() => setShowSettings(true)}
     >
@@ -27,8 +26,8 @@ export function TextBox({ index, box }: TextBoxProps) {
             value={box.text}
             onChange={(e) =>
               setBoxes((prev) =>
-                prev.map((b, i) =>
-                  i === index ? { ...b, text: e.target.value } : b
+                prev.map((b) =>
+                  b.id === box.id ? { ...b, text: e.target.value } : b
                 )
               )
             }

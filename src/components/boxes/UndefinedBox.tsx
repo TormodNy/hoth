@@ -17,11 +17,8 @@ import {
   ICustomBox,
   IImageBox,
   ITextBox,
+  IUndefinedBox,
 } from "../../types";
-
-interface UndefinedBoxProps {
-  index: number;
-}
 
 function boxDefaultValue(box: IBaseBox, boxType: BoxType) {
   switch (boxType) {
@@ -43,17 +40,21 @@ function boxDefaultValue(box: IBaseBox, boxType: BoxType) {
   }
 }
 
-export function UndefinedBox({ index }: UndefinedBoxProps) {
+interface UndefinedBoxProps {
+  box: IUndefinedBox;
+}
+
+export function UndefinedBox({ box }: UndefinedBoxProps) {
   const { setBoxes } = useContext(AppContext);
 
   function setBoxType(boxType: BoxType) {
     setBoxes((prev) =>
-      prev.map((box, i) => (i === index ? boxDefaultValue(box, boxType) : box))
+      prev.map((b) => (b.id === box.id ? boxDefaultValue(b, boxType) : b))
     );
   }
 
   return (
-    <Box index={index} removable={false}>
+    <Box box={box} removable={false}>
       <div className="w-full h-full grid gap-2 grid-cols-2">
         <Button variant="outlined" onClick={() => setBoxType(BoxType.Text)}>
           <TextFields />

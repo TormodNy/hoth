@@ -13,7 +13,11 @@ export function AddBoxButton() {
         onClick={() =>
           setBoxes((prev) => [
             ...prev,
-            { id: crypto.randomUUID(), boxType: BoxType.Undefined },
+            {
+              id: crypto.randomUUID(),
+              boxType: BoxType.Undefined,
+              saved: false,
+            },
           ])
         }
         variant="outlined"

@@ -6,17 +6,16 @@ import { IImageBox } from "../../types";
 import { AppContext } from "../../App";
 
 interface ImageBoxProps {
-  index: number;
   box: IImageBox;
 }
 
-export function ImageBox({ index, box }: ImageBoxProps) {
+export function ImageBox({ box }: ImageBoxProps) {
   const { setBoxes } = useContext(AppContext);
-  const [showSettings, setShowSettings] = useState(true);
+  const [showSettings, setShowSettings] = useState(!box.saved);
 
   return (
     <Box
-      index={index}
+      box={box}
       removable={!showSettings}
       onEdit={() => setShowSettings(true)}
     >
@@ -27,8 +26,8 @@ export function ImageBox({ index, box }: ImageBoxProps) {
             value={box.source}
             onChange={(e) =>
               setBoxes((prev) =>
-                prev.map((b, i) =>
-                  i === index ? { ...b, source: e.target.value } : b
+                prev.map((b) =>
+                  b.id === box.id ? { ...b, source: e.target.value } : b
                 )
               )
             }
@@ -41,7 +40,7 @@ export function ImageBox({ index, box }: ImageBoxProps) {
             value={box.fit}
             onChange={(_, value) =>
               setBoxes((prev) =>
-                prev.map((b, i) => (i === index ? { ...b, fit: value } : b))
+                prev.map((b) => (b.id === box.id ? { ...b, fit: value } : b))
               )
             }
           >

@@ -11,6 +11,7 @@ export enum BoxType {
 export interface IBaseBox {
   boxType: BoxType;
   id: string;
+  saved: boolean;
 }
 
 export interface IUndefinedBox extends IBaseBox {

@@ -1,12 +1,13 @@
+import { IWeatherBox } from "../../types";
 import { Box } from "./Box";
 
 interface WeatherBoxProps {
-  index: number;
+  box: IWeatherBox;
 }
 
-export function WeatherBox({ index }: WeatherBoxProps) {
+export function WeatherBox({ box }: WeatherBoxProps) {
   return (
-    <Box index={index} removable>
+    <Box box={box} removable>
       <iframe
         src="https://www.yr.no/en/content/1-72837/card.html?mode=dark"
         title="Weather forecast for Oslo"
