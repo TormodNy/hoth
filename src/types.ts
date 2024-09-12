@@ -5,6 +5,7 @@ export enum BoxType {
   Weather = "Weather",
   Transport = "Transport",
   Countdown = "Countdown",
+  Clock = "Clock",
   Custom = "Custom",
 }
 
@@ -44,6 +45,10 @@ export interface ICountdownBox extends IBaseBox {
   occasion?: string;
 }
 
+export interface IClockBox extends IBaseBox {
+  boxType: BoxType.Clock;
+}
+
 export interface ICustomBox extends IBaseBox {
   boxType: BoxType.Custom;
   source: string;
@@ -56,4 +61,5 @@ export type IBox =
   | IWeatherBox
   | ITransportBox
   | ICountdownBox
+  | IClockBox
   | ICustomBox;

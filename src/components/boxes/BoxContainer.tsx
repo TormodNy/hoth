@@ -9,6 +9,7 @@ import { BoxType } from "../../types";
 import { CustomBox } from "./CustomBox";
 import { CountdownBox } from "./CountdownBox";
 import { AddBoxButton } from "../AddBoxButton";
+import { ClockBox } from "./ClockBox";
 
 interface BoxContainerProps {
   cursorInWindow: boolean;
@@ -43,6 +44,8 @@ export function BoxContainer({ cursorInWindow }: BoxContainerProps) {
             return <TransportBox box={box} key={box.id} />;
           case BoxType.Countdown:
             return <CountdownBox box={box} key={box.id} />;
+          case BoxType.Clock:
+            return <ClockBox box={box} key={box.id} />;
           case BoxType.Custom:
             return <CustomBox box={box} key={box.id} />;
         }

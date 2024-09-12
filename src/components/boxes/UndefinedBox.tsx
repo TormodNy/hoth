@@ -7,6 +7,7 @@ import {
   DirectionsBus,
   HourglassBottom,
   Image,
+  Schedule,
   TextFields,
   WbSunny,
 } from "@mui/icons-material";
@@ -81,6 +82,10 @@ export function UndefinedBox({ box }: UndefinedBoxProps) {
         >
           <HourglassBottom />
           Countdown
+        </Button>
+        <Button variant="outlined" onClick={() => setBoxType(BoxType.Clock)}>
+          <Schedule />
+          Clock
         </Button>
         <Button variant="outlined" onClick={() => setBoxType(BoxType.Custom)}>
           <Code />
