@@ -6,6 +6,7 @@ export enum BoxType {
   Transport = "Transport",
   Countdown = "Countdown",
   Clock = "Clock",
+  Stream = "Stream",
   Custom = "Custom",
 }
 
@@ -49,6 +50,10 @@ export interface IClockBox extends IBaseBox {
   boxType: BoxType.Clock;
 }
 
+export interface IStreamBox extends IBaseBox {
+  boxType: BoxType.Stream;
+}
+
 export interface ICustomBox extends IBaseBox {
   boxType: BoxType.Custom;
   source: string;
@@ -62,4 +67,5 @@ export type IBox =
   | ITransportBox
   | ICountdownBox
   | IClockBox
+  | IStreamBox
   | ICustomBox;

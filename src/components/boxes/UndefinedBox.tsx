@@ -9,6 +9,7 @@ import {
   Image,
   Schedule,
   TextFields,
+  Tv,
   WbSunny,
 } from "@mui/icons-material";
 import {
@@ -86,6 +87,10 @@ export function UndefinedBox({ box }: UndefinedBoxProps) {
         <Button variant="outlined" onClick={() => setBoxType(BoxType.Clock)}>
           <Schedule />
           Clock
+        </Button>
+        <Button variant="outlined" onClick={() => setBoxType(BoxType.Stream)}>
+          <Tv />
+          Stream
         </Button>
         <Button variant="outlined" onClick={() => setBoxType(BoxType.Custom)}>
           <Code />

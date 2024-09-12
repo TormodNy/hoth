@@ -10,6 +10,7 @@ import { CustomBox } from "./CustomBox";
 import { CountdownBox } from "./CountdownBox";
 import { AddBoxButton } from "../AddBoxButton";
 import { ClockBox } from "./ClockBox";
+import { StreamBox } from "./StreamBox";
 
 interface BoxContainerProps {
   cursorInWindow: boolean;
@@ -46,6 +47,8 @@ export function BoxContainer({ cursorInWindow }: BoxContainerProps) {
             return <CountdownBox box={box} key={box.id} />;
           case BoxType.Clock:
             return <ClockBox box={box} key={box.id} />;
+          case BoxType.Stream:
+            return <StreamBox box={box} key={box.id} />;
           case BoxType.Custom:
             return <CustomBox box={box} key={box.id} />;
         }
