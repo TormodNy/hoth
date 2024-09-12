@@ -15,7 +15,11 @@ export function CustomBox({ index, box }: CustomBoxProps) {
   const [showSettings, setShowSettings] = useState(true);
 
   return (
-    <Box index={index} removable={!showSettings}>
+    <Box
+      index={index}
+      removable={!showSettings}
+      onEdit={() => setShowSettings(true)}
+    >
       {showSettings ? (
         <BoxSettings header="Custom box" setShowSettings={setShowSettings}>
           <TextField

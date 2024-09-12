@@ -15,7 +15,11 @@ export function TextBox({ index, box }: TextBoxProps) {
   const [showSettings, setShowSettings] = useState(true);
 
   return (
-    <Box index={index} removable={!showSettings}>
+    <Box
+      index={index}
+      removable={!showSettings}
+      onEdit={() => setShowSettings(true)}
+    >
       {showSettings ? (
         <BoxSettings header="Text box" setShowSettings={setShowSettings}>
           <TextField

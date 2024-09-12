@@ -15,7 +15,11 @@ export function ImageBox({ index, box }: ImageBoxProps) {
   const [showSettings, setShowSettings] = useState(true);
 
   return (
-    <Box index={index} removable={!showSettings}>
+    <Box
+      index={index}
+      removable={!showSettings}
+      onEdit={() => setShowSettings(true)}
+    >
       {showSettings ? (
         <BoxSettings header="Image box" setShowSettings={setShowSettings}>
           <TextField

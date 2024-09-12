@@ -16,7 +16,11 @@ export function CountdownBox({ index, box }: CountdownBoxProps) {
   const [showSettings, setShowSettings] = useState(true);
 
   return (
-    <Box index={index} removable={!showSettings}>
+    <Box
+      index={index}
+      removable={!showSettings}
+      onEdit={() => setShowSettings(true)}
+    >
       {showSettings ? (
         <BoxSettings header="Countdown box" setShowSettings={setShowSettings}>
           <div className="w-full flex gap-2">
@@ -60,7 +64,11 @@ export function CountdownBox({ index, box }: CountdownBoxProps) {
           />
         </BoxSettings>
       ) : (
-        <Countdown date={box.date} time={box.time || "00:00"} occasion={box.occasion} />
+        <Countdown
+          date={box.date}
+          time={box.time || "00:00"}
+          occasion={box.occasion}
+        />
       )}
     </Box>
   );
