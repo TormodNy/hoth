@@ -14,6 +14,8 @@ export interface IBaseBox {
   boxType: BoxType;
   id: string;
   saved: boolean;
+  start: number;
+  end: number;
 }
 
 export interface IUndefinedBox extends IBaseBox {

@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { BoxContainer } from "./components/boxes/BoxContainer";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, IconButton } from "@mui/material";
-import { BoxType, IBox } from "./types";
+import { IBox } from "./types";
 import { Save } from "@mui/icons-material";
 
 const darkTheme = createTheme({
@@ -31,9 +31,7 @@ function App() {
       if (localStorageBoxes) {
         setBoxes(JSON.parse(localStorageBoxes));
       } else {
-        setBoxes([
-          { id: crypto.randomUUID(), boxType: BoxType.Undefined, saved: false },
-        ]);
+        setBoxes([]);
       }
     }
 
@@ -64,7 +62,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <AppContext.Provider value={{ boxes, setBoxes }}>
-        <div className="w-full h-full flex flex-col items-center p-10 gap-8">
+        <div className="w-full h-full flex flex-col items-center justify-center p-10 gap-8">
           <BoxContainer cursorInWindow={cursorInWindow} />
           {cursorInWindow && (
             <IconButton
